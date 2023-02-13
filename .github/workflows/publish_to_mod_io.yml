@@ -78,5 +78,5 @@ jobs:
         uses: actions/upload-artifact@v3.0.0
         with:
           name: Test
-          path: CustomNameList_${{ github.event.inputs.mod_version }}.zip
+          path: ModIoPackage/CustomNameList_${{ github.event.inputs.mod_version }}.zip
         
