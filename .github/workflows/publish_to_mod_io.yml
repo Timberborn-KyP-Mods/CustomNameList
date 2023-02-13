@@ -55,14 +55,14 @@ jobs:
       - name: Create ModFolder folder
         run: mkdir ModIoPackage
         
-      - name: Copy Mod
-        run: cp CustomNameList/CustomNameList/CustomNameList/bin/RELEASE/netstandard2.1/CustomNameList.dll ModIoPackage
+#       - name: Copy Mod
+#         run: cp CustomNameList/CustomNameList/CustomNameList/bin/RELEASE/netstandard2.1/CustomNameList.dll ModIoPackage
         
       - name: Upload mod to Artifact
         uses: actions/upload-artifact@v3.0.0
         with:
           name: CustomNameList_${{ needs.versions.outputs.timber_api_leading_zero }}
-          path: ModIoPackage
+          path: ./
         
         
         
