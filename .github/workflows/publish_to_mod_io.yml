@@ -49,14 +49,14 @@ jobs:
           replace: ${{ github.event.inputs.min_game_version }}
           regex: false
         
-      - name: Build TimberAPICore
+      - name: Build Mod
         run: dotnet build --no-restore --configuration RELEASE -p:Version=${{ github.event.inputs.mod_version }}
         
       - name: Create ModFolder folder
         run: mkdir ModIoPackage
         
       - name: Copy Mod
-        run: cp bin/RELEASE/netstandard2.1/CustomNameList.dll ModIoPackage
+        run: cp CustomNameList/bin/RELEASE/netstandard2.1/CustomNameList.dll ModIoPackage
         
       - name: Upload mod to Artifact
         uses: actions/upload-artifact@v3.0.0
