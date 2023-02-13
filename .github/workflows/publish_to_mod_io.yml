@@ -1,0 +1,70 @@
+name: Publish to mod.io
+
+on:
+  workflow_dispatch:
+    inputs:
+      mod_version:
+        type: string
+        description: Mod version
+        required: true
+      min_game_version:
+        type: string
+        description: Minimum game version
+        required: true
+      min_api_version:
+        type: string
+        description: Minimum TimberAPI version
+        required: true
+
+jobs:
+  create_modio_package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Find and Replace VERSION_PLACEHOLDER
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "VERSION_PLACEHOLDER"
+          replace: ${{ github.event.inputs.mod_version }}
+          regex: false
+          
+      - name: Find and Replace MINIMUM_API_VERSION_PLACEHOLDER
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "MINIMUM_API_VERSION_PLACEHOLDER"
+          replace: ${{ github.event.inputs.min_api_version }}
+          regex: false
+        
+      - name: Find and Replace MINIMUM_GAME_VERSION_PLACEHOLDER
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "MINIMUM_GAME_VERSION_PLACEHOLDER"
+          replace: ${{ github.event.inputs.min_game_version }}
+          regex: false
+        
+      - name: Build TimberAPICore
+        run: dotnet build --no-restore --configuration RELEASE -p:Version=${{ needs.versions.outputs.timber_api_leading_zero }}
+        
+      - name: Create ModFolder folder
+        run: mkdir ModIoPackage
+        
+      - name: Copy Mod
+        run: cp bin/RELEASE/netstandard2.1/CustomNameList.dll ModIoPackage
+        
+      - name: Upload mod to Artifact
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: CustomNameList_${{ needs.versions.outputs.timber_api_leading_zero }}
+          path: ModIoPackage
+        
+        
+        
+        
+        
