@@ -71,7 +71,8 @@ jobs:
         uses: TheDoctor0/zip-release@0.6.2
         with:
           filename: CustomNameList_${{ github.event.inputs.mod_version }}.zip
-          path: "ModIoPackage"
+          path: "./"
+          directory: ModIoPackage
           
       - name: Test
         uses: actions/upload-artifact@v3.0.0
