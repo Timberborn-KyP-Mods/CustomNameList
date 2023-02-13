@@ -1,8 +1,8 @@
 {
   "Name": "ExampleMod",                    
-  "Version": "VERSION_PLACEHOLDER",
+  "Version": "1.0.0",
   "UniqueId": "myname.mods.examplemod",
-  "MinimumApiVersion": "MINIMUM_API_VERSION_PLACEHOLDER",
-  "MinimumGameVersion": "MINIMUM_GAME_VERSION_PLACEHOLDER",
+  "MinimumApiVersion": "0.5.0",
+  "MinimumGameVersion": "0.3.0",
   "EntryDll": "CustomNameList.dll"
 }
