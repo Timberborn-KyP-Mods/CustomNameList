@@ -58,10 +58,13 @@ jobs:
       - name: Copy Mod
         run: cp ./CustomNameList/bin/Release/netstandard2.1/CustomNameList.dll ModIoPackage
         
+      - name: Copy Mod.ci.json
+        run: cp ./CustomNameList/package/mod.ci.json ModIoPackage/mod.json
+        
       - name: Upload mod to Artifact
         uses: actions/upload-artifact@v3.0.0
         with:
-          name: CustomNameList_${{ needs.versions.outputs.timber_api_leading_zero }}
+          name: CustomNameList_${{ github.event.inputs.mod_version }}
           path: ModIoPackage
         
         
