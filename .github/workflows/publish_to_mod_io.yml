@@ -28,10 +28,10 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
         
-      - name: Find and Replace VERSION_PLACEHOLDER
+      - name: Find and Replace MOD_VERSION_PLACEHOLDER
         uses: jacobtomlinson/gha-find-replace@v2
         with:
-          find: "VERSION_PLACEHOLDER"
+          find: "MOD_VERSION_PLACEHOLDER"
           replace: ${{ github.event.inputs.mod_version }}
           regex: false
           
@@ -67,7 +67,15 @@ jobs:
           name: CustomNameList_${{ github.event.inputs.mod_version }}
           path: ModIoPackage
         
-        
-        
-        
+      - name: Zip Release
+        uses: TheDoctor0/zip-release@0.6.2
+        with:
+          filename: CustomNameList_${{ github.event.inputs.mod_version }}.zip
+          path: "ModIoPackage"
+          
+      - name: Test
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: Test
+          path: CustomNameList_${{ github.event.inputs.mod_version }}.zip
         
