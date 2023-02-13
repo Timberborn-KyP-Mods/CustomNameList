@@ -50,7 +50,7 @@ jobs:
           regex: false
         
       - name: Build TimberAPICore
-        run: dotnet build --no-restore --configuration RELEASE -p:Version=${{ needs.versions.outputs.timber_api_leading_zero }}
+        run: dotnet build --no-restore --configuration RELEASE -p:Version=${{ github.event.inputs.mod_version }}
         
       - name: Create ModFolder folder
         run: mkdir ModIoPackage
