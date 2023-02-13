@@ -56,7 +56,7 @@ jobs:
         run: mkdir ModIoPackage
         
       - name: Copy Mod
-        run: cp CustomNameList/bin/RELEASE/netstandard2.1/CustomNameList.dll ModIoPackage
+        run: cp CustomNameList/CustomNameList/bin/RELEASE/netstandard2.1/CustomNameList.dll ModIoPackage
         
       - name: Upload mod to Artifact
         uses: actions/upload-artifact@v3.0.0
