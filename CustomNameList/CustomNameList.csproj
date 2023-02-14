@@ -11,6 +11,7 @@
 
     <PropertyGroup>
         <UseLocalTimberbornSource>false</UseLocalTimberbornSource>
+        <UseLocalTimberApi>false</UseLocalTimberApi>
         <CopyDllToPath>false</CopyDllToPath>
     </PropertyGroup>
 
