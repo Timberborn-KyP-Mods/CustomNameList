@@ -7,14 +7,6 @@ on:
         type: string
         description: Mod version
         required: true
-      min_game_version:
-        type: string
-        description: Minimum game version
-        required: true
-      min_api_version:
-        type: string
-        description: Minimum TimberAPI version
-        required: true
 
 jobs:
   create_modio_package:
@@ -33,20 +25,6 @@ jobs:
         with:
           find: "MOD_VERSION_PLACEHOLDER"
           replace: ${{ github.event.inputs.mod_version }}
-          regex: false
-          
-      - name: Find and Replace MINIMUM_API_VERSION_PLACEHOLDER
-        uses: jacobtomlinson/gha-find-replace@v2
-        with:
-          find: "MINIMUM_API_VERSION_PLACEHOLDER"
-          replace: ${{ github.event.inputs.min_api_version }}
-          regex: false
-        
-      - name: Find and Replace MINIMUM_GAME_VERSION_PLACEHOLDER
-        uses: jacobtomlinson/gha-find-replace@v2
-        with:
-          find: "MINIMUM_GAME_VERSION_PLACEHOLDER"
-          replace: ${{ github.event.inputs.min_game_version }}
           regex: false
         
       - name: Build Mod
