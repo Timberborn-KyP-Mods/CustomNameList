@@ -1,8 +1,8 @@
 {
-  "Name": "ExampleMod",                    
+  "Name": "CustomNameList",
   "Version": "MOD_VERSION_PLACEHOLDER",
-  "UniqueId": "myname.mods.examplemod",
-  "MinimumApiVersion": "MINIMUM_API_VERSION_PLACEHOLDER",
-  "MinimumGameVersion": "MINIMUM_GAME_VERSION_PLACEHOLDER",
+  "UniqueId": "kyp.custom_name_list",
+  "MinimumApiVersion": "0.5.3",
+  "MinimumGameVersion": "0.3.5.2",
   "EntryDll": "CustomNameList.dll"
 }
