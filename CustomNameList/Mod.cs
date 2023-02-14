@@ -1,14 +1,18 @@
-﻿using TimberApi.ConsoleSystem;
+﻿using HarmonyLib;
+using TimberApi.ConsoleSystem;
 using TimberApi.ModSystem;
-using UnityEngine;
 
 namespace CustomNameList
 {
     public class Mod : IModEntrypoint
     {
+        public static CustomNameListConfig Config { get; private set; } = null!;
+        
         public void Entry(IMod mod, IConsoleWriter consoleWriter)
         {
-            
+            new Harmony("kyp.customNameList").PatchAll();
+
+            Config = mod.Configs.Get<CustomNameListConfig>();
         }
     }
 }
